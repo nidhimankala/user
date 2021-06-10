@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
-const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
+
+const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif, image.mp4'
 
 
 function Home() {
@@ -21,9 +23,25 @@ class JsonForm extends Component{
     super(props);
     this.state={profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'};
   }
-
+  onFileUpload = () => {
+    
+    // Create an object of formData
+    const formData = new FormData();
   
-
+    // Update the formData object
+    formData.append(
+      "myFile",
+      this.state.profileImg,
+      this.state.profileImg.name
+    );
+  
+    // Details of the uploaded file
+    console.log(this.state.profileImg);
+  
+    // Request made to the backend api
+    // Send formData object
+    axios.post("api/uploadfile", formData);
+  };
 
 
 imageHandler = (e) => {
@@ -52,6 +70,12 @@ imageHandler = (e) => {
 					<div className="label">
           <label className="image-upload" htmlFor="input">
 						Choose your Photo
+					</label>
+          </div>
+          <button id="input1" onClick={this.onFileUpload}/>
+          <div className="label">
+          <label className="image-upload" htmlFor="input1">
+						Upload your Photo
 					</label>
           </div>
 				</div>         

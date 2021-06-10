@@ -9,8 +9,11 @@ function Navigator() {
             <h2>Surveillance system</h2>
             <ul className="nvlink">
               <Link to="/imgprocessing"><li>Home</li></Link>
-              <Link to="/"><li>User Dashboard</li></Link>
-              <Link to="/wc"><li>Face Recognition</li></Link>
+              <Link to="/"><li>Image</li></Link>
+              <Link to="/wc"><li>Webcam</li></Link>
+              <Link to="/vd2"><li>Video2</li></Link>
+
+
 
 
 
